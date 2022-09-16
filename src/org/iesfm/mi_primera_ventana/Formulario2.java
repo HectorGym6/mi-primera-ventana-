@@ -30,3 +30,4 @@ public class Formulario2 {
         f.repaint();
     }
     }
+    //
