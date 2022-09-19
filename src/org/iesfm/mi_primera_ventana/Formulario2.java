@@ -30,4 +30,4 @@ public class Formulario2 {
         f.repaint();
     }
     }
-    //
+    // si pones debajo del f.set un f.pack(); te da el tamaño minimo
