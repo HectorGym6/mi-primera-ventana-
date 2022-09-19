@@ -22,37 +22,37 @@ public class Botones {
         windowsRd.setActionCommand("Windows");
         JRadioButton iosRd = new JRadioButton("MacOS");
         iosRd.setActionCommand("MacOS");
-
-        osBg.add(linuxRd);
-        osBg.add(windowsRd);
-        osBg.add(iosRd);
-
+        JButton botonOk = new JButton("ok");
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(linuxRd);
+        grupo.add(windowsRd);
+        grupo.add(iosRd);
         mainPanel.add(linuxRd);
         mainPanel.add(windowsRd);
         mainPanel.add(iosRd);
+        mainPanel.add(botonOk);
 
-        JLabel osIconLb = new JLabel();
+        JLabel imagen = new JLabel();
+        imagen.setIcon(new ImageIcon("linuxx.jpg"));
+        mainPanel.add(imagen);
 
-        osIconLb.setIcon(new ImageIcon("linuxx.jpg"));
-        mainPanel.add(osIconLb);
+        JLabel imagen2 = new JLabel();
+        imagen.setIcon(new ImageIcon("winx.jpg"));
+        mainPanel.add(imagen);
 
-        JLabel win = new JLabel();
-        win.setIcon(new ImageIcon("winx.jpg"));
-        mainPanel.add(win);
-
-        JLabel mac = new JLabel();
-        mac.setIcon(new ImageIcon("macos.png"));
-        mainPanel.add(mac);
+        JLabel imagen3 = new JLabel();
+        imagen.setIcon(new ImageIcon("macos.png"));
+        mainPanel.add(imagen);
 
 
-        JButton botonOk = new JButton("ok");
+
         botonOk.addActionListener(new ActionListener() {
             @Override //este metodo dicta lo que va a pasar si hacemos click en el boton
             public void actionPerformed(ActionEvent e) {
                 String selected = osBg.getSelection().getActionCommand();
                 JOptionPane.showMessageDialog(f,"Ha seleccionado" + selected);
 
-                osIconLb.setIcon(new ImageIcon(selected + ".jpg"));
+                imagen.setIcon(new ImageIcon(selected + ".jpg"));
             }
         });
         mainPanel.add(botonOk);
