@@ -8,34 +8,41 @@ import java.awt.event.ActionListener;
 public class ComboBox {
     public static void main(String[] args) {
 
-        JFrame f = new JFrame("Ejercicio");
-        f.setBounds(700, 200, 300, 300);
+        JFrame f = new JFrame();
+        f.setBounds(
+                10, 10, 2000, 300
+        );
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         JPanel mainPanel = new JPanel();
-        JLabel texto = new JLabel("Elige un lenguaje de progamacion");
-        mainPanel.add(texto);
-        JComboBox <String> combo = new JComboBox<>();
-        combo.addItem("Java");
-        combo.addItem("C");
-        combo.addItem("C++");
-        combo.addItem("C#");
-        combo.addItem("PHP");
-        mainPanel.add(combo);
-        JButton botonOk = new JButton("OK");
-        /* botonOk.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            String lenguajeSeleccionado = combo.getItemAt(combo.getSelectedIndex());
-            JOptionPane.showMessageDialog(f,lenguajeSeleccionado);
-        }*/
-        botonOk.addActionListener(actionEvent -> {
-            String lenguajeSeleccionado = combo.getItemAt(combo.getSelectedIndex());
-            JOptionPane.showMessageDialog(f,lenguajeSeleccionado);
-        });
-        mainPanel.add(botonOk);
+
+        JLabel selectedLanguageLabel = new JLabel("Programming language Selected: ");
+        mainPanel.add(selectedLanguageLabel);
+
+        JComboBox<String> languageCb = new JComboBox<>();
+        languageCb.addItemListener(
+                e -> {
+                    String selectedLanguage = e.getItem().toString();
+                    selectedLanguageLabel.setText("Programming language Selected: " + selectedLanguage);
+                }
+        );
+        languageCb.addItem("C");
+        languageCb.addItem("C++");
+        languageCb.addItem("C#");
+        languageCb.addItem("Java");
+        languageCb.addItem("PHP");
+        mainPanel.add(languageCb);
+        // CREAR Y AÑADIR LOS COMPONENTES
+
+        JButton showButton = new JButton("Show");
+
+
+        mainPanel.add(showButton);
+
         f.setContentPane(mainPanel);
         f.repaint();
         f.revalidate();
+
     }
 }
