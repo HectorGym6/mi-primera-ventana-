@@ -6,21 +6,34 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
 
-        //Creamos la ventana hasta abajo pero vacia
         JFrame f = new JFrame();
-        f.setBounds(10,10,200,300);
-f.setVisible(true);
-f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //IMPORTANTE PARA QUE NO NOS OCUPE MEMORIA, HACE QUE SE CIERREN LOS PROCESOS
-//HASTA AQUI ESTA VACIA
+        f.setBounds(
+                10, 10, 2000, 300
+        );
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//Este es el panel Principal
         JPanel mainPanel = new JPanel();
-        mainPanel.setBackground(Color.magenta); //con esto le metemos color
-        //ESte es un componente de tipo etiqueta
-        JLabel label = new JLabel("Hola Mundo");
-        //Añadimos la etiqueta al panel
-        mainPanel.add(label);
-        //HAcemos que dentro del panel aparezca la etiqueta
+        mainPanel.setBackground(Color.WHITE);
+        mainPanel.setLayout(null);
+
+        JPanel panel1 = new JPanel();
+        panel1.setBounds(0,0,100,100);
+        panel1.setBackground(Color.BLUE);
+
+
+        JPanel panel2 = new JPanel();
+        panel2.setBounds(200,0,100,100);
+        panel2.setBackground(Color.YELLOW);
+
+
+        mainPanel.add(panel1);
+        mainPanel.add(panel2);
+
+
         f.setContentPane(mainPanel);
-}
+
+        f.revalidate();
+        f.repaint();
+    }
 }
