@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class JlistWindow {
 
     public static void main(String[] args) {
-
         JFrame f = new JFrame("FindReplace");
         f.setBounds(
                 10, 10, 400, 400
@@ -35,6 +34,7 @@ public class JlistWindow {
         JLabel textoSouth = new JLabel("Se agregó un nuevo elemento");
 
         southPanel.add(textoSouth, BorderLayout.CENTER);
+        southPanel.setVisible(false);
 
         mainPanel.add(southPanel, BorderLayout.SOUTH);
 
@@ -115,6 +115,7 @@ public class JlistWindow {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 peopleModel.addElement(areaTexto.getText());
+                southPanel.setVisible(true);
 
                 if(areaTexto.getText().equals("")){
                     JOptionPane.showMessageDialog(f,"Debes introducir un texto");
@@ -127,6 +128,8 @@ public class JlistWindow {
             public void actionPerformed(ActionEvent actionEvent) {
                 int selected = people.getSelectedIndex();
                 peopleModel.removeElementAt(selected);
+                textoSouth.setText("El elemento ha sido eliminado");
+                southPanel.setVisible(true);
             }
         });
 
@@ -134,8 +137,9 @@ public class JlistWindow {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 peopleModel.clear();
-
                 JOptionPane.showMessageDialog(f, "Lista Borrada");
+                southPanel.setVisible(false);
+
             }
         });
 
